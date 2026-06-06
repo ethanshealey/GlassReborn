@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generic card used for Status, Camera, AI cards in the home ViewPager -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/tvCardIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:textColor="@color/accent"
+        android:textSize="56sp" />
+
+    <TextView
+        android:id="@+id/tvCardTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvCardIcon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/text_primary"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvCardSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvCardTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/text_secondary"
+        android:textSize="16sp" />
+
+    <!-- Extra content area (e.g. notification list, gallery grid) -->
+    <FrameLayout
+        android:id="@+id/cardContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tvCardSubtitle"
+        android:layout_marginTop="8dp" />
+
+</RelativeLayout>

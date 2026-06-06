@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.GlassCompanion" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:colorBackground">@color/black</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- Translucent overlay for notifications popping over the launcher -->
+    <style name="Theme.GlassCompanion.Overlay" parent="Theme.GlassCompanion">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.7</item>
+    </style>
+</resources>
