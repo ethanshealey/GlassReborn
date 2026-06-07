@@ -1,0 +1,51 @@
+# Android build outputs
+app/build/
+build/
+*.apk
+*.aab
+*.ap_
+
+# Gradle
+.gradle/
+local.properties
+gradle.properties.local
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+captures/
+.externalNativeBuild/
+.cxx/
+
+# iOS build outputs
+ios/*/build/
+ios/*.xcworkspace/xcuserdata/
+ios/**/*.xcuserstate
+ios/**/xcuserdata/
+DerivedData/
+
+# Xcode
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+
+# macOS
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Temporary / editor
+*.swp
+*.orig
+*~
+.env
