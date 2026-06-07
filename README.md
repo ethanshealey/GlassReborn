@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" width="220" alt="GlassReborn" />
+</p>
+
 # GlassReborn
 
 GlassReborn is a two-app system that revives the Google Glass Explorer Edition (XE) as a modern heads-up display. A custom Android launcher runs on Glass, while a companion iPhone app bridges Glass to the outside world via Bluetooth and WiFi.
