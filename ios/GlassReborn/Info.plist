@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <key>CFBundleName</key>
+    <string>$(PRODUCT_NAME)</string>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>Glass Companion uses Bluetooth to connect to your Google Glass and send notifications, AI responses, and camera commands.</string>
+
+    <key>NSBluetoothPeripheralUsageDescription</key>
+    <string>Glass Companion acts as a Bluetooth accessory so Google Glass can connect to your iPhone.</string>
+
+    <key>NSLocalNetworkUsageDescription</key>
+    <string>Glass Companion connects to Glass over your local WiFi network to transfer photos and stream media.</string>
+
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Glass Companion uses the microphone for voice queries sent to the AI assistant.</string>
+
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Glass Companion saves photos taken on Google Glass to your photo library.</string>
+
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>Glass Companion saves photos from Google Glass to your photo library.</string>
+
+    <!-- Background modes: keep BLE peripheral alive and refresh battery info -->
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>bluetooth-peripheral</string>
+        <string>bluetooth-central</string>
+        <string>fetch</string>
+        <string>processing</string>
+    </array>
+
+    <!-- URL scheme for iOS Shortcuts notification forwarding -->
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLName</key>
+            <string>com.glass.reborn</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>glassreborn</string>
+            </array>
+        </dict>
+    </array>
+
+    <key>UILaunchScreen</key>
+    <dict/>
+
+    <key>CFBundleDisplayName</key>
+    <string>Glass</string>
+
+    <key>UIRequiresFullScreen</key>
+    <false/>
+
+    <key>LSSupportsOpeningDocumentsInPlace</key>
+    <false/>
+</dict>
+</plist>

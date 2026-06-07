@@ -10,6 +10,7 @@
     <!-- Network / WiFi server -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <!-- Camera -->
@@ -35,7 +36,7 @@
     <application
         android:name=".GlassApp"
         android:allowBackup="false"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.GlassCompanion">
 
@@ -72,6 +73,11 @@
         <activity
             android:name=".GalleryActivity"
             android:exported="false"
+            android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".WifiSetupActivity"
+            android:exported="true"
             android:screenOrientation="landscape" />
 
         <!-- Background service: manages BLE connection + WiFi server -->

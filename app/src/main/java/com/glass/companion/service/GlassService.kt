@@ -52,7 +52,7 @@ class GlassService : Service(), BleConnectionManager.Listener {
         ble = BleConnectionManager(this, this)
         wifiServer = WifiServer(
             photoDir,
-            onClientConnected = { wifiConnected = true; sendStatusToPhone() },
+            onClientConnected = { wifiConnected = true },
             onClientDisconnected = { wifiConnected = false }
         )
         wifiServer.start()
@@ -72,6 +72,8 @@ class GlassService : Service(), BleConnectionManager.Listener {
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        intent?.getStringExtra("ble_send")?.let { ble.sendMessage(it) }
+        intent?.getStringExtra("photo_path")?.let { onPhotoSaved(File(it)) }
         return START_STICKY
     }
 
@@ -133,6 +135,14 @@ class GlassService : Service(), BleConnectionManager.Listener {
             GlassProtocol.T_PHOTO_TRIGGER -> broadcaster.sendBroadcast(
                 Intent(GlassApp.ACTION_PHOTO_TRIGGER)
             )
+            GlassProtocol.T_TIMEZONE -> {
+                val tz = msg.optString("tz").takeIf { it.isNotBlank() } ?: return
+                getSharedPreferences("glass", MODE_PRIVATE).edit()
+                    .putString("timezone", tz).apply()
+                broadcaster.sendBroadcast(
+                    Intent(GlassApp.ACTION_TIMEZONE).putExtra(GlassApp.EXTRA_TZ, tz)
+                )
+            }
         }
     }
 
@@ -201,7 +211,10 @@ class GlassService : Service(), BleConnectionManager.Listener {
 
     private fun getWifiIp(): String {
         return try {
-            NetworkInterface.getNetworkInterfaces().toList()
+            val ifaces = NetworkInterface.getNetworkInterfaces().toList()
+            // Prefer wlan0 (WiFi) over other interfaces (USB, rndis, etc.)
+            val preferred = ifaces.sortedByDescending { it.name.startsWith("wlan") }
+            preferred
                 .flatMap { it.inetAddresses.toList() }
                 .firstOrNull { !it.isLoopbackAddress && it.hostAddress?.contains('.') == true }
                 ?.hostAddress ?: "0.0.0.0"

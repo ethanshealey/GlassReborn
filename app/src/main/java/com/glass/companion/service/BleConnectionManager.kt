@@ -42,9 +42,12 @@ class BleConnectionManager(
 
     fun startScanning() {
         if (state != State.IDLE) return
+        Log.d(TAG, "BLE adapter enabled=${adapter.isEnabled} state=${adapter.state}")
         state = State.SCANNING
-        adapter.startLeScan(arrayOf(GlassProtocol.SERVICE_UUID), leScanCallback)
-        Log.d(TAG, "BLE scan started")
+        // Pass no UUID filter — the filter API is broken on API 19 (callback never fires).
+        // We match by local name "GlassReborn" inside the callback instead.
+        val started = adapter.startLeScan(leScanCallback)
+        Log.d(TAG, "BLE scan started=$started")
     }
 
     fun stopScanning() {
@@ -68,11 +71,47 @@ class BleConnectionManager(
 
     // ── BLE scan callback ─────────────────────────────────────────────────
 
-    private val leScanCallback = BluetoothAdapter.LeScanCallback { device, _, _ ->
+    private val leScanCallback = BluetoothAdapter.LeScanCallback { device, rssi, scanRecord ->
+        val name = device.name
+        Log.d(TAG, "BLE device: name=$name addr=${device.address} rssi=$rssi")
+
+        val isOurs = name == "GlassReborn" || containsServiceUuid(scanRecord)
+        if (!isOurs) return@LeScanCallback
+
+        Log.d(TAG, "Found GlassReborn at ${device.address}, connecting…")
         stopScanning()
         state = State.CONNECTING
-        Log.d(TAG, "Found device: ${device.address}, connecting…")
         gatt = device.connectGatt(context, false, gattCallback)
+    }
+
+    // Parse raw BLE advertisement bytes for our 128-bit service UUID (little-endian).
+    // iOS sometimes omits the local name from the advertisement packet.
+    private fun containsServiceUuid(record: ByteArray?): Boolean {
+        record ?: return false
+        // Our UUID in little-endian byte order
+        val target = byteArrayOf(
+            0x00.toByte(), 0x14.toByte(), 0x64.toByte(), 0xf3.toByte(),
+            0xb0.toByte(), 0x00.toByte(), 0x40.toByte(), 0x42.toByte(),
+            0xba.toByte(), 0x50.toByte(), 0x05.toByte(), 0xca.toByte(),
+            0x45.toByte(), 0xbf.toByte(), 0x8a.toByte(), 0xbc.toByte()
+        )
+        var i = 0
+        while (i < record.size - 2) {
+            val len  = record[i].toInt() and 0xFF
+            val type = record[i + 1].toInt() and 0xFF
+            if (len == 0) break
+            // 0x06 = Incomplete, 0x07 = Complete list of 128-bit UUIDs
+            if ((type == 0x06 || type == 0x07) && len - 1 >= 16) {
+                val uuidStart = i + 2
+                if (uuidStart + 16 <= record.size) {
+                    if (record.copyOfRange(uuidStart, uuidStart + 16).contentEquals(target)) {
+                        return true
+                    }
+                }
+            }
+            i += 1 + len
+        }
+        return false
     }
 
     // ── GATT callback ─────────────────────────────────────────────────────

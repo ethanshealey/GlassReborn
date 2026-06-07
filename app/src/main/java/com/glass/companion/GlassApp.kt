@@ -31,6 +31,7 @@ class GlassApp : Application() {
         const val ACTION_AI_RESPONSE     = "glass.AI_RESPONSE"
         const val ACTION_PHONE_BATTERY   = "glass.PHONE_BATTERY"
         const val ACTION_PHOTO_TRIGGER   = "glass.PHOTO_TRIGGER"
+        const val ACTION_TIMEZONE        = "glass.TIMEZONE"
 
         const val EXTRA_STATE     = "state"
         const val EXTRA_JSON      = "json"
@@ -39,5 +40,6 @@ class GlassApp : Application() {
         const val EXTRA_LEVEL     = "level"
         const val EXTRA_NAME      = "name"
         const val EXTRA_NUMBER    = "number"
+        const val EXTRA_TZ        = "tz"
     }
 }

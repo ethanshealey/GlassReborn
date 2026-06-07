@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent">#00BCD4</color>
+    <color name="black">#000000</color>
+    <color name="card_bg">#111111</color>
+    <color name="divider">#333333</color>
+    <color name="status_error">#F44336</color>
+    <color name="status_ok">#4CAF50</color>
+    <color name="status_warn">#FFC107</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#AAAAAA</color>
+    <string name="app_name">Glass Reborn</string>
+    <string name="call_ended">Call ended</string>
+    <string name="card_ai">AI Assistant</string>
+    <string name="card_camera">Camera</string>
+    <string name="card_gallery">Gallery</string>
+    <string name="card_notifications">Notifications</string>
+    <string name="card_status">Status</string>
+    <string name="connected">Connected</string>
+    <string name="disconnected">Scanning…</string>
+    <string name="incoming_call">Incoming call</string>
+    <string name="listening">Listening…</string>
+    <string name="no_notifications">No notifications</string>
+    <string name="no_photos">No photos yet</string>
+    <string name="photo_saved">Photo saved</string>
+    <string name="service_channel">Glass Reborn</string>
+    <string name="service_notification">Glass Reborn running</string>
+    <string name="swipe_hint">← swipe →</string>
+    <string name="tap_to_shoot">Tap to take photo</string>
+    <string name="tap_to_speak">Tap to speak</string>
+    <string name="thinking">Thinking…</string>
+    <style name="Theme.GlassCompanion" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:colorBackground">@color/black</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="Theme.GlassCompanion.Overlay" parent="Theme.GlassCompanion">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.7</item>
+    </style>
+</resources>

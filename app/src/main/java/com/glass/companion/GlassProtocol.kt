@@ -31,7 +31,8 @@ object GlassProtocol {
     const val T_CALL_END     = "CALL_END"     // call ended/rejected
     const val T_AI_RESP      = "AI_RESP"      // AI assistant response (streamed)
     const val T_PHONE_BATT   = "PHONE_BATT"  // phone battery level
-    const val T_PHOTO_TRIGGER = "PHOTO_TRIG" // remote camera trigger
+    const val T_PHOTO_TRIGGER = "PHOTO_TRIG"
+    const val T_TIMEZONE      = "TIMEZONE" // remote camera trigger
 
     // Glass → iPhone
     const val T_CMD          = "CMD"          // command from Glass

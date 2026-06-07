@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(JAVA_HOME=\"/Applications/Android Studio.app/Contents/jbr/Contents/Home\" /Users/ethanshealey/Documents/github/GlassReborn/gradlew assembleDebug)",
+      "Bash(adb install *)",
+      "Bash(adb shell *)",
+      "Bash(adb logcat *)",
+      "Bash(pip3 install *)",
+      "Bash(python3 -c \"from PIL import Image; print\\('ok'\\)\")",
+      "Bash(python3)"
+    ]
+  }
+}
