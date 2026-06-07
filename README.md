@@ -125,7 +125,7 @@ Open `ios/GlassReborn/GlassReborn.xcodeproj` in Xcode, select your iPhone as the
   <tr>
     <td align="center"><img src="preview/glass__home.png" width="280"/><br/><sub>Home</sub></td>
     <td align="center"><img src="preview/glass__camera.png" width="280"/><br/><sub>Camera</sub></td>
-    <td align="center"><img src="preview/glass__camera2.png" width="280"/><br/><sub>Camera preview</sub></td>
+    <td align="center"><img src="preview/glass__camera2.png" width="280"/><br/><sub>Camera Viewfinder</sub></td>
   </tr>
   <tr>
     <td align="center"><img src="preview/glass__gallery.png" width="280"/><br/><sub>Gallery</sub></td>
@@ -134,8 +134,8 @@ Open `ios/GlassReborn/GlassReborn.xcodeproj` in Xcode, select your iPhone as the
   </tr>
   <tr>
     <td align="center"><img src="preview/glass__ai.png" width="280"/><br/><sub>AI assistant</sub></td>
-    <td align="center"><img src="preview/glass__ai2.png" width="280"/><br/><sub>AI response</sub></td>
-    <td align="center"><img src="preview/glass__ai3.png" width="280"/><br/><sub>AI scrolling</sub></td>
+    <td align="center"><img src="preview/glass__ai2.png" width="280"/><br/><sub>AI Question</sub></td>
+    <td align="center"><img src="preview/glass__ai3.png" width="280"/><br/><sub>AI Response</sub></td>
   </tr>
 </table>
 
@@ -145,7 +145,6 @@ Open `ios/GlassReborn/GlassReborn.xcodeproj` in Xcode, select your iPhone as the
 
 <table>
   <tr>
-    <td align="center"><img src="preview/glass__start.png" width="200"/><br/><sub>Start Screen</sub></td>
     <td align="center"><img src="preview/glass__iphone_home.png" width="200"/><br/><sub>Home</sub></td>
     <td align="center"><img src="preview/glass__iphone_gallery.png" width="200"/><br/><sub>Gallery</sub></td>
     <td align="center"><img src="preview/glass__iphone_ai.png" width="200"/><br/><sub>AI history</sub></td>
