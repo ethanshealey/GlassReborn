@@ -117,6 +117,43 @@ Open `ios/GlassReborn/GlassReborn.xcodeproj` in Xcode, select your iPhone as the
 
 ---
 
+## Screenshots
+
+### Glass
+
+<table>
+  <tr>
+    <td align="center"><img src="preview/glass__home.png" width="280"/><br/><sub>Home</sub></td>
+    <td align="center"><img src="preview/glass__camera.png" width="280"/><br/><sub>Camera</sub></td>
+    <td align="center"><img src="preview/glass__camera2.png" width="280"/><br/><sub>Camera preview</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="preview/glass__gallery.png" width="280"/><br/><sub>Gallery</sub></td>
+    <td align="center"><img src="preview/glass__gallery2.png" width="280"/><br/><sub>Gallery detail</sub></td>
+    <td align="center"><img src="preview/glass__example_photo.jpg" width="280"/><br/><sub>Example photo</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="preview/glass__ai.png" width="280"/><br/><sub>AI assistant</sub></td>
+    <td align="center"><img src="preview/glass__ai2.png" width="280"/><br/><sub>AI response</sub></td>
+    <td align="center"><img src="preview/glass__ai3.png" width="280"/><br/><sub>AI scrolling</sub></td>
+  </tr>
+</table>
+
+---
+
+### iPhone
+
+<table>
+  <tr>
+    <td align="center"><img src="preview/glass__iphone_home.png" width="200"/><br/><sub>Connection</sub></td>
+    <td align="center"><img src="preview/glass__iphone_gallery.png" width="200"/><br/><sub>Gallery</sub></td>
+    <td align="center"><img src="preview/glass__iphone_ai.png" width="200"/><br/><sub>AI history</sub></td>
+    <td align="center"><img src="preview/glass__iphone_settings.png" width="200"/><br/><sub>Settings</sub></td>
+  </tr>
+</table>
+
+---
+
 ## Requirements
 
 | Component | Requirement |
