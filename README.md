@@ -113,8 +113,9 @@ Open `ios/GlassReborn/GlassReborn.xcodeproj` in Xcode, select your iPhone as the
 
 1. Open the iPhone app — it starts advertising over BLE immediately.
 2. Wake Glass — it scans and connects automatically.
-     2a. If you have issues with connecting, try reloading the iPhone app and Glass app
-3. The status dot on Glass turns green; the iPhone Connection tab shows "Glass connected ✓".
+
+   2a. If you have issues with connecting, try reloading the iPhone app and Glass app
+4. The status dot on Glass turns green; the iPhone Connection tab shows "Glass connected ✓".
 
 ---
 
