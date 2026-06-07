@@ -40,6 +40,7 @@ final class AppState: ObservableObject {
 
     // State
     @Published var notifications: [PhoneNotification] = []
+    @Published var conversations: [Conversation] = []
     @Published var glassIP: String = ""
     @Published var phoneBattery: Int = UIDevice.current.batteryLevel >= 0
         ? Int(UIDevice.current.batteryLevel * 100) : -1
@@ -52,11 +53,31 @@ final class AppState: ObservableObject {
         let date: Date
     }
 
+    struct Conversation: Identifiable, Codable {
+        let id: UUID
+        let query: String
+        var response: String
+        let date: Date
+        var isStreaming: Bool
+
+        init(query: String) {
+            self.id         = UUID()
+            self.query      = query
+            self.response   = ""
+            self.date       = Date()
+            self.isStreaming = true
+        }
+    }
+
     init() {
         let key = UserDefaults.standard.string(forKey: "apiKey") ?? ""
         apiKey = key
         ai = AIService(apiKey: key)
         glassTimezone = UserDefaults.standard.string(forKey: "glassTimezone") ?? "America/New_York"
+        if let data = UserDefaults.standard.data(forKey: "conversations"),
+           let saved = try? JSONDecoder().decode([Conversation].self, from: data) {
+            conversations = saved
+        }
         UIDevice.current.isBatteryMonitoringEnabled = true
         setup()
     }
@@ -120,19 +141,46 @@ final class AppState: ObservableObject {
     // MARK: — AI
 
     func runAI(query: String) {
-        let aiRef = AIService(apiKey: apiKey) // use current key
+        var convo = Conversation(query: query)
+        conversations.insert(convo, at: 0)
+
+        let aiRef = AIService(apiKey: apiKey)
         aiRef.query(
             query,
             onChunk: { [weak self] chunk in
-                self?.ble.sendAIResponse(text: chunk, done: false)
+                guard let self else { return }
+                if let idx = self.conversations.firstIndex(where: { $0.id == convo.id }) {
+                    self.conversations[idx].response += chunk
+                }
+                convo.response += chunk
+                self.ble.sendAIResponse(text: chunk, done: false)
             },
             onDone: { [weak self] in
-                self?.ble.sendAIResponse(text: "", done: true)
+                guard let self else { return }
+                if let idx = self.conversations.firstIndex(where: { $0.id == convo.id }) {
+                    self.conversations[idx].isStreaming = false
+                }
+                self.saveConversations()
+                self.ble.sendAIResponse(text: "", done: true)
             },
             onError: { [weak self] error in
-                self?.ble.sendAIResponse(text: "Error: \(error.localizedDescription)", done: true)
+                guard let self else { return }
+                let msg = "Error: \(error.localizedDescription)"
+                if let idx = self.conversations.firstIndex(where: { $0.id == convo.id }) {
+                    self.conversations[idx].response = msg
+                    self.conversations[idx].isStreaming = false
+                }
+                self.saveConversations()
+                self.ble.sendAIResponse(text: msg, done: true)
             }
         )
+    }
+
+    private func saveConversations() {
+        let trimmed = Array(conversations.prefix(100)) // keep last 100
+        if let data = try? JSONEncoder().encode(trimmed) {
+            UserDefaults.standard.set(data, forKey: "conversations")
+        }
     }
 
     // MARK: — Manual notification push

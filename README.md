@@ -145,7 +145,8 @@ Open `ios/GlassReborn/GlassReborn.xcodeproj` in Xcode, select your iPhone as the
 
 <table>
   <tr>
-    <td align="center"><img src="preview/glass__iphone_home.png" width="200"/><br/><sub>Connection</sub></td>
+    <td align="center"><img src="preview/glass__start.png" width="200"/><br/><sub>Start Screen</sub></td>
+    <td align="center"><img src="preview/glass__iphone_home.png" width="200"/><br/><sub>Home</sub></td>
     <td align="center"><img src="preview/glass__iphone_gallery.png" width="200"/><br/><sub>Gallery</sub></td>
     <td align="center"><img src="preview/glass__iphone_ai.png" width="200"/><br/><sub>AI history</sub></td>
     <td align="center"><img src="preview/glass__iphone_settings.png" width="200"/><br/><sub>Settings</sub></td>
